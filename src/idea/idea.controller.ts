@@ -3,7 +3,7 @@ import { IdeaService } from './idea.service';
 import { Controller, Get, Post, Put, Delete, Body, Param, UsePipes, Logger } from '@nestjs/common';
 import { IdeaDTO } from './idea.dto';
 
-@Controller('idea')
+@Controller('api/ideas')
 export class IdeaController {
     private logger = new Logger('IdeaController');
     constructor(private ideaService: IdeaService) {}
