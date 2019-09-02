@@ -1,7 +1,7 @@
-import { CommentDTO } from './../comment.dto';
-import { IdeaEntity } from './../../idea/idea.entity';
-import { UserEntity } from './../../user/user.entity';
-import { CommentEntity } from './../comment.entity';
+import { CommentDTO } from './comment.dto';
+import { IdeaEntity } from './../idea/idea.entity';
+import { UserEntity } from './../user/user.entity';
+import { CommentEntity } from './comment.entity';
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -19,6 +19,7 @@ export class CommentService {
         if(comment.author) {
             responseObject.author = comment.author.toResponseObject();
         }
+        
         return responseObject;
     }
 
@@ -42,7 +43,6 @@ export class CommentService {
         });
 
         return comments.map(comment => this.toResponseObject(comment));
-
     }
 
     async show(id: string) {
@@ -50,8 +50,8 @@ export class CommentService {
             where: {id},
             relations: ['author', 'idea']
         });
-        return this.toResponseObject(comment);
 
+        return this.toResponseObject(comment);
     }
 
     async create(ideaId: string, userId: string, data: CommentDTO) {

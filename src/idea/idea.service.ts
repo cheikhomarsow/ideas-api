@@ -58,7 +58,7 @@ export class IdeaService {
             relations: ['author', 'upvotes', 'downvotes', 'comments'],
             take: 25,
             skip: 25 * (page - 1),
-            order: newest && {created: 'DESC'}
+            order: newest && { created: 'DESC' }
         });
         return ideas.map(idea => this.toResponseObject(idea));
     }
